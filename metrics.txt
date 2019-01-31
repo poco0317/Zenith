@@ -1,0 +1,775 @@
+[Global]
+FallbackTheme=_fallback
+
+[Common]
+FirstAttractScreen=""
+InitialScreen="ScreenInit"
+
+[ScreenWithMenuElements]
+WaitForChildrenBeforeTweeningOut=true
+#
+ShowHeader=true
+HeaderX=SCREEN_CENTER_X
+HeaderY=SCREEN_TOP
+HeaderOnCommand=draworder,105
+HeaderOffCommand=
+
+ShowFooter=true
+FooterX=SCREEN_CENTER_X
+FooterY=SCREEN_BOTTOM
+FooterOnCommand=draworder,105
+FooterOffCommand=
+
+ShowHelp=true
+HelpX=SCREEN_CENTER_X
+HelpY=SCREEN_BOTTOM-14
+HelpOnCommand=draworder,110;zoom,0.5;shadowlength,1;diffusealpha,0;sleep,0.5;linear,0.25;diffusealpha,1
+HelpOffCommand=linear,0.35*0.5;diffusealpha,0
+
+TimerX=SCREEN_RIGHT-36-4
+TimerY=SCREEN_TOP+12
+TimerOnCommand=draworder,110;zoom,0.75;shadowlength,1;skewx,-0.125;diffusealpha,0;sleep,0.35;linear,0.35;diffusealpha,1;visible,PREFSMAN:GetPreference("MenuTimer");
+# TimerOnCommand=fov,90;vanishpoint,SCREEN_RIGHT-36-4,SCREEN_TOP+20;draworder,5;visible,PREFSMAN:GetPreference("MenuTimer");rotationy,90;decelerate,0.4;rotationy,0;
+TimerOffCommand=linear,0.35*0.5;diffusealpha,0
+[ScreenWithMenuElements Header]
+TextX=
+TextY=16
+TextOnCommand=zoom,0.75;strokecolor,Colors.Outline;diffusebottomedge,color("#748392");diffusealpha,0;zoomx,1;sleep,0.5;decelerate,0.25;diffusealpha,1;zoomx,0.75
+TextOffCommand=accelerate,0.35*0.5;zoomx,0.75*1.25;diffusealpha,0;
+#
+FillX=
+FillY=
+FillOnCommand=zoomtowidth,scale(SCREEN_WIDTH,640,640*2,854,640*2);vertalign,top;y,-80;decelerate,0.35;y,0;
+FillOffCommand=accelerate,0.35;y,-80;
+#
+CoverX=
+CoverY=
+CoverOnCommand=zoomtowidth,scale(SCREEN_WIDTH,640,640*2,854,640*2);vertalign,top;y,-34;sleep,0.35;decelerate,0.15;y,0;
+CoverOffCommand=accelerate,0.35;y,-80;
+# CoverOffCommand=accelerate,0.35*0.75;y,-34;
+[ScreenWithMenuElements Footer]
+FillX=
+FillY=
+FillOnCommand=zoomtowidth,scale(SCREEN_WIDTH,640,640*2,854,640*2);vertalign,bottom;y,56;decelerate,0.35;y,0;
+FillOffCommand=accelerate,0.35;y,56;
+#
+CoverX=
+CoverY=8
+CoverOnCommand=zoomtowidth,scale(SCREEN_WIDTH,640,640*2,854,640*2);vertalign,bottom;y,34;sleep,0.35;decelerate,0.15;y,0;
+CoverOffCommand=accelerate,0.35;y,56;
+# CoverOffCommand=accelerate,0.35*0.75;y,34;
+[ScreenTitleMenu]
+ShowHeader=false
+ShowFooter=false
+#
+ScrollerX=SCREEN_CENTER_X
+ScrollerY=SCREEN_BOTTOM-96
+ScrollerOnCommand=draworder,105
+#
+[ScreenSelectPlayStyle]
+#
+ShowScroller=true
+WrapScroller=false
+ScrollerX=SCREEN_CENTER_X
+ScrollerY=SCREEN_BOTTOM-112
+ScrollerOnCommand=
+ScrollerOffCommand=
+#
+ScrollerP1X=SCREEN_CENTER_X
+ScrollerP1Y=SCREEN_BOTTOM-112
+ScrollerP1OnCommand=addy,224;sleep,0.35;decelerate,0.35;addy,-224
+ScrollerP1OffCommand=accelerate,0.35;addy,256;
+ScrollerP2X=SCREEN_CENTER_X
+ScrollerP2Y=SCREEN_BOTTOM-112
+ScrollerP2OnCommand=addy,224;sleep,0.35;decelerate,0.35;addy,-224
+ScrollerP2OffCommand=accelerate,0.35;addy,256;
+
+#
+SharedSelection=false
+PerChoiceIconElement=true
+ShowIcon=true
+UseIconMetrics=true
+# 
+ShowCursor=true
+CursorTweenSeconds=0.3
+#
+CursorP1OffsetXFromIcon=-64
+CursorP1OffsetYFromIcon=72
+CursorP2OffsetXFromIcon=64
+CursorP2OffsetYFromIcon=72
+#
+CursorP1OnCommand=draworder,100;diffusealpha,0;addy,32;decelerate,0.5;addy,-32;diffusealpha,1;sleep,0;glow,Colors.White;decelerate,0.35;glow,Colors.Invisible;
+CursorP2OnCommand=draworder,100;diffusealpha,0;addy,32;decelerate,0.5;addy,-32;diffusealpha,1;sleep,0;glow,Colors.White;decelerate,0.35;glow,Colors.Invisible;
+CursorP1ChangeCommand=stoptweening;smooth,0.15
+CursorP2ChangeCommand=stoptweening;smooth,0.15
+CursorP1ChooseCommand=stoptweening;smooth,0.1;zoom,0.8;glow,Colors.White;smooth,0.125;zoom,1;glow,Colors.Invisible;
+CursorP2ChooseCommand=stoptweening;smooth,0.1;zoom,0.8;glow,Colors.White;smooth,0.125;zoom,1;glow,Colors.Invisible;
+CursorP1OffCommand=stoptweening;sleep,0.3;accelerate,0.45;addy,48;diffusealpha,0
+CursorP2OffCommand=stoptweening;sleep,0.3;accelerate,0.45;addy,48;diffusealpha,0
+#
+# OptionOrderBUp="1:1,2:2"
+# OptionOrderBDown="1:1,2:2"
+# OptionOrderBLeft="1:2,2:1"
+# OptionOrderBRight="1:2,2:1"
+# OptionOrderBAuto="1:1,2:2"
+#
+IconChoiceNormalX=SCREEN_CENTER_X-160+24
+IconChoiceNormalY=SCREEN_CENTER_Y-32
+IconChoiceNormalSwitchToPageNormalCommand=
+IconChoiceNormalSwitchToPage2Command=
+IconChoiceNormalOnCommand=diffusealpha,0;addy,64;decelerate,0.5;diffusealpha,1;addy,-64;sleep,0;glow,Colors.White;decelerate,0.4;glow,Colors.Invisible;
+IconChoiceNormalOffCommand=
+IconChoiceNormalOffFocusedCommand=stopeffect;glow,Colors.White;decelerate,0.25;glow,Colors.Invisible;smooth,0.3;x,SCREEN_CENTER_X;zoom,1;sleep,1;bouncebegin,0.125;zoomy,0
+IconChoiceNormalOffUnfocusedCommand=sleep,0.3;linear,0.125;diffusealpha,0;addy,32;
+IconChoiceNormalGainFocusCommand=stoptweening;linear,0.025;zoom,1;diffuse,Colors.White;pulse;effecttiming,0.5,0.125,0.25,0.125;effectmagnitude,1.075,1,1;effectclock,'beat';
+IconChoiceNormalLoseFocusCommand=stopeffect;finishtweening;zoom,1;decelerate,0.125;zoom,0.875;diffuse,color("0.5,0.5,0.5,1");
+
+IconChoiceExtendedX=SCREEN_CENTER_X+160-24
+IconChoiceExtendedY=SCREEN_CENTER_Y-32
+IconChoiceExtendedSwitchToPageExtendedCommand=
+IconChoiceExtendedSwitchToPageExtendedCommand=
+IconChoiceExtendedOnCommand=diffusealpha,0;addy,64;sleep,0.25;decelerate,0.5;addy,-64;diffusealpha,1;sleep,0;glow,Colors.White;decelerate,0.4;glow,Colors.Invisible;
+IconChoiceExtendedOffCommand=
+IconChoiceExtendedOffFocusedCommand=stopeffect;glow,Colors.White;decelerate,0.25;glow,Colors.Invisible;smooth,0.3;x,SCREEN_CENTER_X;zoom,1;sleep,1;bouncebegin,0.125;zoomy,0
+IconChoiceExtendedOffUnfocusedCommand=sleep,0.3;linear,0.125;diffusealpha,0;addy,32;
+IconChoiceExtendedGainFocusCommand=stoptweening;linear,0.025;zoom,1;diffuse,Colors.White;pulse;effecttiming,0.5,0.125,0.25,0.125;effectmagnitude,1.075,1,1;effectclock,'beat';
+IconChoiceExtendedLoseFocusCommand=stopeffect;finishtweening;zoom,1;decelerate,0.125;zoom,0.875;diffuse,color("0.5,0.5,0.5,1");
+#
+ShowExplanationFrame=true
+ExplanationFrameX=SCREEN_CENTER_X
+ExplanationFrameY=SCREEN_BOTTOM-112
+ExplanationFrameOnCommand=addy,224;diffusealpha,0;sleep,0.35;decelerate,0.35;diffuse,ColorLightTone( Colors.Red );addy,-224
+ExplanationFrameOffCommand=accelerate,0.35;addy,256;
+[ScreenSelectMusic]
+SelectMenuAvailable=true
+#
+BannerX=SCREEN_CENTER_X-160
+BannerY=SCREEN_CENTER_Y-96-16
+BannerOnCommand=draworder,100;scaletoclipped,256,80;
+BannerOffCommand=
+#
+ShowBannerFrame=true
+BannerFrameX=SCREEN_CENTER_X-160
+BannerFrameY=SCREEN_CENTER_Y-96-16
+BannerFrameOnCommand=draworder,105;
+BannerFrameOffCommand=
+#
+ShowBPMDisplay=true
+BPMDisplayX=SCREEN_CENTER_X-160+128-4-28
+BPMDisplayY=SCREEN_CENTER_Y-96+40+18-16
+BPMDisplayOnCommand=draworder,110;horizalign,right;vertalign,bottom;zoom,0.75;maxwidth,128*0.75;strokecolor,Color("Black");effectmagnitude,1,1.125,1;effectclock,'beat'
+BPMDisplayOffCommand=
+#
+ShowBPMText=true
+BPMTextX=SCREEN_CENTER_X-160+128-4-28+4
+BPMTextY=SCREEN_CENTER_Y-96+40+18-16
+BPMTextOnCommand=draworder,110;horizalign,left;vertalign,bottom;zoom,0.5;strokecolor,Color("Black");effectmagnitude,1,1.125,1;effectclock,'beat'
+BPMTextOffCommand=
+#
+ShowSongInfo=true
+SongInfoX=SCREEN_CENTER_X-160-128+4
+SongInfoY=SCREEN_CENTER_Y-96+40+18-16
+SongInfoOnCommand=draworder,110;
+SongInfoOffCommand=
+#
+ShowSongOptions=true
+SongOptionsX=SCREEN_CENTER_X
+SongOptionsY=SCREEN_CENTER_Y
+SongOptionsOnCommand=visible,false;draworder,1000
+SongOptionsOffCommand=
+#--
+SongOptionsShowCommand=visible,true;zoom,1.2;settext,"PRESS &START; FOR OPTIONS";decelerate,0.3;zoom,1;
+SongOptionsEnterCommand=settext,"ENTERING OPTIONS";sleep,0.5;linear,0.3;zoomy,0;
+SongOptionsHideCommand=linear,0.3;zoomy,0;
+#
+ShowSongOptionsFrame=true
+SongOptionsFrameX=SCREEN_CENTER_X
+SongOptionsFrameY=SCREEN_CENTER_Y
+SongOptionsFrameOnCommand=visible,false;draworder,1000
+SongOptionsFrameOffCommand=
+#--
+SongOptionsFrameShowCommand=visible,true;diffuse,Color("Red");diffusealpha,0.5;zoomy,40*1.5;linear,1.5;zoomy,40;
+SongOptionsFrameEnterCommand=sleep,0.5;linear,0.3;diffusealpha,0;
+SongOptionsFrameHideCommand=linear,0.3;diffusealpha,0
+#
+ShowDifficultyList=not GAMESTATE:IsCourseMode();
+DifficultyListX=SCREEN_CENTER_X-160
+DifficultyListY=SCREEN_TOP+216
+DifficultyListOnCommand=addx,-SCREEN_CENTER_X;decelerate,0.35;addx,SCREEN_CENTER_X;
+DifficultyListOffCommand=bouncebegin,0.15;zoomx,0;
+#
+DifficultyListShowCommand=stoptweening;bounceend,0.135;zoomx,1
+DifficultyListHideCommand=stoptweening;bouncebegin,0.135;zoomx,0
+#
+ShowCourseContentsList=true
+CourseContentsListX=SCREEN_CENTER_X-160
+CourseContentsListY=SCREEN_TOP+216+6
+CourseContentsListOnCommand=addx,-SCREEN_CENTER_X;decelerate,0.35;addx,SCREEN_CENTER_X
+CourseContentsListOffCommand=bouncebegin,0.15;zoomx,0;
+#
+ShowIndicatorDisplays=false
+IndicatorDisplaysX=SCREEN_CENTER_X
+IndicatorDisplaysY=SCREEN_BOTTOM-40
+IndicatorDisplaysOnCommand=draworder,105
+IndicatorDisplaysOffCommand=
+#
+PlayerPaneP1X=SCREEN_CENTER_X-160
+PlayerPaneP1Y=SCREEN_BOTTOM-48+12+32
+PlayerPaneP1OnCommand=draworder,95;vertalign,bottom;diffuse,PlayerColor(PLAYER_1);diffusebottomedge,ColorDarkTone( PlayerColor(PLAYER_1) );addy,274;sleep,0.35*0.5;decelerate,0.35;addy,-274
+PlayerPaneP1OffCommand=
+#
+PlayerPaneP2X=SCREEN_CENTER_X-160
+PlayerPaneP2Y=SCREEN_BOTTOM-48+12+32
+PlayerPaneP2OnCommand=draworder,95;vertalign,bottom;diffuse,PlayerColor(PLAYER_1);diffusebottomedge,ColorDarkTone( PlayerColor(PLAYER_2) );addy,274;sleep,0.35*0.5;decelerate,0.35;addy,-274
+PlayerPaneP2OffCommand=
+#
+StepsDisplayP1X=SCREEN_CENTER_X-160
+StepsDisplayP1Y=SCREEN_BOTTOM-64+8
+StepsDisplayP1OnCommand=fov,90;finishtweening;draworder,105;zoom,0;sleep,0.35;zoom,1;queuecommand,"Set"
+StepsDisplayP1OffCommand=
+#
+StepsDisplayP2X=SCREEN_CENTER_X+160
+StepsDisplayP2Y=SCREEN_BOTTOM-64+8
+StepsDisplayP2OnCommand=fov,90;finishtweening;draworder,105;zoom,0;sleep,0.35;zoom,1;queuecommand,"Set"
+StepsDisplayP2OffCommand=
+
+[ScreenGameplay]
+ShowHeader=false
+ShowFooter=false
+[ScreenStageInformation]
+ShowHeader=false
+ShowFooter=false
+ShowHelp=false
+[ScreenEvaluation]
+ShowHeader=false
+ShowFooter=false
+
+ShowJudgmentLineW1=true
+ShowJudgmentLineW2=true
+ShowJudgmentLineW3=true
+ShowJudgmentLineW4=true
+ShowJudgmentLineW5=true
+ShowJudgmentLineHeld=true
+ShowJudgmentLineMiss=true
+ShowJudgmentLineMaxCombo=true
+ShowGradeArea=true
+ShowScoreArea=true
+ShowSharedJudgmentLineLabels=true
+ShowGraphDisplay=true
+ShowComboGraph=true
+ShowStepsDisplay=true
+#
+W1NumberP1X=SCREEN_CENTER_X-160+40
+W1NumberP1Y=SCREEN_TOP+160
+W1NumberP1OnCommand=diffuse,PlayerColor(PLAYER_1);strokecolor,ColorDarkTone( PlayerColor(PLAYER_1) );shadowlength,1
+W1NumberP1OffCommand=
+W1NumberP2X=SCREEN_CENTER_X+160-40
+W1NumberP2Y=SCREEN_TOP+160
+W1NumberP2OnCommand=diffuse,PlayerColor(PLAYER_2);strokecolor,ColorDarkTone( PlayerColor(PLAYER_2) );shadowlength,1
+W1NumberP2OffCommand=
+W1LabelX=SCREEN_CENTER_X
+W1LabelY=SCREEN_TOP+160
+W1LabelOnCommand=
+W1LabelOffCommand=
+#
+W2NumberP1X=SCREEN_CENTER_X-160+40
+W2NumberP1Y=SCREEN_TOP+180
+W2NumberP1OnCommand=diffuse,PlayerColor(PLAYER_1);strokecolor,ColorDarkTone( PlayerColor(PLAYER_1) );shadowlength,1
+W2NumberP1OffCommand=
+W2NumberP2X=SCREEN_CENTER_X+160-40
+W2NumberP2Y=SCREEN_TOP+180
+W2NumberP2OnCommand=diffuse,PlayerColor(PLAYER_2);strokecolor,ColorDarkTone( PlayerColor(PLAYER_2) );shadowlength,1
+W2NumberP2OffCommand=
+W2LabelX=SCREEN_CENTER_X
+W2LabelY=SCREEN_TOP+180
+W2LabelOnCommand=
+W2LabelOffCommand=
+#
+W3NumberP1X=SCREEN_CENTER_X-160+40
+W3NumberP1Y=SCREEN_TOP+200
+W3NumberP1OnCommand=diffuse,PlayerColor(PLAYER_1);strokecolor,ColorDarkTone( PlayerColor(PLAYER_1) );shadowlength,1
+W3NumberP1OffCommand=
+W3NumberP2X=SCREEN_CENTER_X+160-40
+W3NumberP2Y=SCREEN_TOP+200
+W3NumberP2OnCommand=diffuse,PlayerColor(PLAYER_2);strokecolor,ColorDarkTone( PlayerColor(PLAYER_2) );shadowlength,1
+W3NumberP2OffCommand=
+W3LabelX=SCREEN_CENTER_X
+W3LabelY=SCREEN_TOP+200
+W3LabelOnCommand=
+W3LabelOffCommand=
+#
+W4NumberP1X=SCREEN_CENTER_X-160+40
+W4NumberP1Y=SCREEN_TOP+220
+W4NumberP1OnCommand=diffuse,PlayerColor(PLAYER_1);strokecolor,ColorDarkTone( PlayerColor(PLAYER_1) );shadowlength,1
+W4NumberP1OffCommand=
+W4NumberP2X=SCREEN_CENTER_X+160-40
+W4NumberP2Y=SCREEN_TOP+220
+W4NumberP2OnCommand=diffuse,PlayerColor(PLAYER_2);strokecolor,ColorDarkTone( PlayerColor(PLAYER_2) );shadowlength,1
+W4NumberP2OffCommand=
+W4LabelX=SCREEN_CENTER_X
+W4LabelY=SCREEN_TOP+220
+W4LabelOnCommand=
+W4LabelOffCommand=
+#
+W5NumberP1X=SCREEN_CENTER_X-160+40
+W5NumberP1Y=SCREEN_TOP+240
+W5NumberP1OnCommand=diffuse,PlayerColor(PLAYER_1);strokecolor,ColorDarkTone( PlayerColor(PLAYER_1) );shadowlength,1
+W5NumberP1OffCommand=
+W5NumberP2X=SCREEN_CENTER_X+160-40
+W5NumberP2Y=SCREEN_TOP+240
+W5NumberP2OnCommand=diffuse,PlayerColor(PLAYER_2);strokecolor,ColorDarkTone( PlayerColor(PLAYER_2) );shadowlength,1
+W5NumberP2OffCommand=
+W5LabelX=SCREEN_CENTER_X
+W5LabelY=SCREEN_TOP+240
+W5LabelOnCommand=
+W5LabelOffCommand=
+#
+MissNumberP1X=SCREEN_CENTER_X-160+40
+MissNumberP1Y=SCREEN_TOP+260
+MissNumberP1OnCommand=diffuse,PlayerColor(PLAYER_1);strokecolor,ColorDarkTone( PlayerColor(PLAYER_1) );shadowlength,1
+MissNumberP1OffCommand=
+MissNumberP2X=SCREEN_CENTER_X+160-40
+MissNumberP2Y=SCREEN_TOP+260
+MissNumberP2OnCommand=diffuse,PlayerColor(PLAYER_2);strokecolor,ColorDarkTone( PlayerColor(PLAYER_2) );shadowlength,1
+MissNumberP2OffCommand=
+MissLabelX=SCREEN_CENTER_X
+MissLabelY=SCREEN_TOP+260
+MissLabelOnCommand=
+MissLabelOffCommand=
+#
+HeldNumberP1X=SCREEN_CENTER_X-160+40
+HeldNumberP1Y=SCREEN_TOP+280
+HeldNumberP1OnCommand=diffuse,PlayerColor(PLAYER_1);strokecolor,ColorDarkTone( PlayerColor(PLAYER_1) );shadowlength,1
+HeldNumberP1OffCommand=
+HeldNumberP2X=SCREEN_CENTER_X+160-40
+HeldNumberP2Y=SCREEN_TOP+280
+HeldNumberP2OnCommand=diffuse,PlayerColor(PLAYER_2);strokecolor,ColorDarkTone( PlayerColor(PLAYER_2) );shadowlength,1
+HeldNumberP2OffCommand=
+HeldLabelX=SCREEN_CENTER_X
+HeldLabelY=SCREEN_TOP+280
+HeldLabelOnCommand=
+HeldLabelOffCommand=
+
+#
+MaxComboNumberP1X=SCREEN_CENTER_X-160+40
+MaxComboNumberP1Y=SCREEN_TOP+300
+MaxComboNumberP1OnCommand=diffuse,PlayerColor(PLAYER_1);strokecolor,ColorDarkTone( PlayerColor(PLAYER_1) );shadowlength,1
+MaxComboNumberP1OffCommand=
+MaxComboNumberP2X=SCREEN_CENTER_X+160-40
+MaxComboNumberP2Y=SCREEN_TOP+300
+MaxComboNumberP2OnCommand=diffuse,PlayerColor(PLAYER_2);strokecolor,ColorDarkTone( PlayerColor(PLAYER_2) );shadowlength,1
+MaxComboNumberP2OffCommand=
+MaxComboLabelX=SCREEN_CENTER_X
+MaxComboLabelY=SCREEN_TOP+300
+MaxComboLabelOnCommand=
+MaxComboLabelOffCommand=
+#
+ScoreLabelX=SCREEN_CENTER_X
+ScoreLabelY=SCREEN_TOP+330
+ScoreLabelOnCommand=
+ScoreLabelOffCommand=
+#
+ScoreNumberP1X=SCREEN_CENTER_X-160
+ScoreNumberP1Y=SCREEN_TOP+330
+ScoreNumberP1OnCommand=diffuse,PlayerColor(PLAYER_1);diffusetopedge,BoostColor(PlayerColor(PLAYER_1),1.5);strokecolor,ColorDarkTone( PlayerColor(PLAYER_1) );shadowlength,1
+ScoreNumberP1OffCommand=
+ScoreNumberP2X=SCREEN_CENTER_X+160
+ScoreNumberP2Y=SCREEN_TOP+330
+ScoreNumberP2OnCommand=diffuse,PlayerColor(PLAYER_2);diffusetopedge,BoostColor(PlayerColor(PLAYER_2),1.5);strokecolor,ColorDarkTone( PlayerColor(PLAYER_2) );shadowlength,1
+ScoreNumberP2OffCommand=
+#
+LargeBannerX=SCREEN_CENTER_X
+LargeBannerY=SCREEN_TOP+100
+LargeBannerOnCommand=
+LargeBannerOffCommand=
+LargeBannerFrameX=SCREEN_CENTER_X
+LargeBannerFrameY=SCREEN_TOP+100
+LargeBannerFrameOnCommand=
+LargeBannerFrameOffCommand=
+#
+GradeFrameP1X=SCREEN_CENTER_X-220
+GradeFrameP1Y=SCREEN_TOP+80
+GradeFrameP1OnCommand=
+GradeFrameP1OffCommand=
+GradeFrameP2X=SCREEN_CENTER_X+220
+GradeFrameP2Y=SCREEN_TOP+80
+GradeFrameP2OnCommand=
+GradeFrameP2OffCommand=
+#
+GradeP1X=SCREEN_CENTER_X-220
+GradeP1Y=SCREEN_TOP+100
+GradeP1OnCommand=
+GradeP1OffCommand=
+GradeP2X=SCREEN_CENTER_X+220
+GradeP2Y=SCREEN_TOP+100
+GradeP2OnCommand=
+GradeP2OffCommand=
+#
+PlayerOptionsP1X=SCREEN_CENTER_X-160
+PlayerOptionsP1Y=SCREEN_TOP+350
+PlayerOptionsP1OnCommand=zoom,0.5
+PlayerOptionsP1OffCommand=
+##
+PlayerOptionsP2X=SCREEN_CENTER_X+160
+PlayerOptionsP2Y=SCREEN_TOP+350
+PlayerOptionsP2OnCommand=zoom,0.5
+PlayerOptionsP2OffCommand=
+#
+SongOptionsX=SCREEN_CENTER_X
+SongOptionsY=SCREEN_BOTTOM-48
+SongOptionsOnCommand=zoom,0.5;shadowlength,1;
+SongOptionsOffCommand=
+#
+DisqualifiedP1X=
+DisqualifiedP1Y=
+DisqualifiedP1OnCommand=
+DisqualifiedP1OffCommand=
+DisqualifiedP2X=
+DisqualifiedP2Y=
+DisqualifiedP2OnCommand=
+DisqualifiedP2OffCommand=
+#
+GraphDisplayP1X=SCREEN_CENTER_X-160
+GraphDisplayP1Y=SCREEN_BOTTOM-100
+GraphDisplayP1OnCommand=
+GraphDisplayP1OffCommand=
+GraphDisplayP2X=SCREEN_CENTER_X+160
+GraphDisplayP2Y=SCREEN_BOTTOM-100
+GraphDisplayP2OnCommand=
+GraphDisplayP2OffCommand=
+#
+ComboGraphP1X=SCREEN_CENTER_X-160
+ComboGraphP1Y=SCREEN_BOTTOM-100+32-7
+ComboGraphP1OnCommand=
+ComboGraphP1OffCommand=
+ComboGraphP2X=SCREEN_CENTER_X+160
+ComboGraphP2Y=SCREEN_BOTTOM-100+32-7
+ComboGraphP2OnCommand=
+ComboGraphP2OffCommand=
+#
+StageAwardP1X=SCREEN_CENTER_X-220
+StageAwardP1Y=SCREEN_TOP+130
+StageAwardP1OnCommand=draworder,105;zoom,0.75;diffuse,Color("Yellow");diffusebottomedge,Color("Orange");strokecolor,ColorDarkTone( Color("Orange") );glowshift;textglowmode,'TextGlowMode_Inner'
+StageAwardP1OffCommand=
+#
+StageAwardP2X=SCREEN_CENTER_X+220
+StageAwardP2Y=SCREEN_TOP+130
+StageAwardP2OnCommand=draworder,105;zoom,0.75;diffuse,Color("Yellow");diffusebottomedge,Color("Orange");strokecolor,ColorDarkTone( Color("Orange") );glowshift;textglowmode,'TextGlowMode_Inner'
+StageAwardP2OffCommand=
+#
+PeakComboAwardP1X=SCREEN_CENTER_X-160
+PeakComboAwardP1Y=SCREEN_TOP+300+10
+PeakComboAwardP1OnCommand=draworder,105;zoom,0.5;diffusebottomedge,Color("Blue");strokecolor,ColorDarkTone( Color("Blue") );glowshift;textglowmode,'TextGlowMode_Inner'
+PeakComboAwardP1OffCommand=
+#
+PeakComboAwardP2X=SCREEN_CENTER_X+160
+PeakComboAwardP2Y=SCREEN_TOP+300+10
+PeakComboAwardP2OnCommand=draworder,105;zoom,0.5;diffusebottomedge,Color("Blue");strokecolor,ColorDarkTone( Color("Blue") );glowshift;textglowmode,'TextGlowMode_Inner'
+PeakComboAwardP2OffCommand=
+#
+ShowStepsDisplayP1=GAMESTATE:IsHumanPlayer(PLAYER_1)
+StepsDisplayP1X=SCREEN_CENTER_X-160
+StepsDisplayP1Y=SCREEN_BOTTOM-40
+StepsDisplayP1OnCommand=visible,THEME:GetMetric(Var "LoadingScreen","ShowStepsDisplayP1");addy,SCREEN_CENTER_Y;decelerate,0.35;addy,-SCREEN_CENTER_Y
+StepsDisplayP1OffCommand=bouncebegin,0.15;zoomx,0;
+#
+ShowStepsDisplayP2=GAMESTATE:IsHumanPlayer(PLAYER_2)
+StepsDisplayP2X=SCREEN_CENTER_X+160
+StepsDisplayP2Y=SCREEN_BOTTOM-40
+StepsDisplayP2OnCommand=visible,THEME:GetMetric(Var "LoadingScreen","ShowStepsDisplayP2");addy,SCREEN_CENTER_Y;decelerate,0.35;addy,-SCREEN_CENTER_Y
+StepsDisplayP2OffCommand=bouncebegin,0.15;zoomx,0;
+
+[ScreenEvaluationNormal]
+Fallback="ScreenEvaluation"
+#
+PlayMusic=false
+#
+ShowBannerFrame=false
+#
+ShowStageDisplay=true
+StageDisplayX=SCREEN_CENTER_X+160
+StageDisplayY=SCREEN_TOP+28
+StageDisplayOnCommand=draworder,105;fov,90;vertalign,bottom;vanishpoint,SCREEN_CENTER_X+160,SCREEN_TOP+28;rotationy,90;decelerate,0.5;rotationy,0;
+StageDisplayOffCommand=
+
+[BPMDisplay]
+SetNoBpmCommand=stoptweening;linear,0.2;diffuse,Color("White");diffusebottomedge,BoostColor(Color("White"),0.875);stopeffect;
+SetNormalCommand=stoptweening;linear,0.2;diffuse,Color("White");diffusebottomedge,BoostColor(Color("White"),0.875);stopeffect;
+SetChangeCommand=stoptweening;linear,0.2;diffuse,Color("Orange");diffusetopedge,BoostColor(Color("Orange"),1.5);thump,1;
+SetRandomCommand=stoptweening;linear,0.2;diffuse,Color("Blue");diffusetopedge,BoostColor(Color("Blue"),1.5);thump,1
+SetExtraCommand=stoptweening;linear,0.2;diffuse,Color("Red");diffusebottomedge,BoostColor(Color("Red"),0.5);thump,1
+Cycle=false
+NoBpmText="000"
+RandomCycleSpeed=0.2		--  smaller numbers mean the bpm cycles faster
+Separator=" - "
+ShowQMarksInRandomCycle=true
+
+[DifficultyList]
+CapitalizeDifficultyNames=false
+ItemsSpacingY=24
+NumShownItems=8
+[LifeMeterBar]
+OverOnCommand=diffuse,Color("Red");diffuserightedge,ColorMidTone(Color("Red"))
+
+[LifeMeterBattery]
+BatteryBlinkTime=0.5
+#
+BatteryP1X=0
+BatteryP1Y=0
+BatteryP2X=0
+BatteryP2Y=0
+#
+NumLivesP1X=-92
+NumLivesP1Y=0
+NumLivesP2X=92
+NumLivesP2Y=0
+[MusicWheel]
+#
+NumSectionColors=1
+SectionColor1=Color("Red")
+#
+SongRealExtraColor=Color("Red")
+SortMenuColor=Color("Red")
+#
+ItemTransformFunction=function(self,offsetFromCenter,itemIndex,numItems) \
+	self:x( ( (1 - math.cos( offsetFromCenter / math.pi ) ) ) * 44 ); \
+	self:y( offsetFromCenter*46 ); \
+end
+NumWheelItems=11
+MusicWheelSortOnCommand=fov,90;
+MusicWheelSortOffCommand=fov,90;
+MusicWheelItemSortOnCommand=zoomy,0;bounceend,0.15;zoomy,1
+MusicWheelItemSortOffCommand=linear,0.175;zoomy,0
+HighlightOnCommand=diffuseshift;effecttiming,(1/8),0,(7/8),0;effectcolor2,Color("White");effectcolor1,Colors.Alpha( Color("Red"), 1 );effectclock,'beatnooffset'
+HighlightOffCommand=
+HighlightSortOnCommand=stoptweening;decelerate,0.125;glow,Color("Stealth");zoom,1
+HighlightSortOffCommand=stoptweening;accelerate,0.125;glow,Color("Orange");zoom,1.05
+WheelItemOnDelayOffset=0.04
+WheelItemOffDelayOffset=0.04
+WheelItemLockedColor=color("0,0,0,0.5")
+[MusicWheelItem]
+WheelNotifyIconX=-128-16+1
+WheelNotifyIconY=0
+WheelNotifyIconOnCommand=
+#
+SongNameX=-120
+SongNameY=0
+SongNameOnCommand=
+#
+CourseX=-120
+CourseY=0
+CourseOnCommand=maxwidth,208;horizalign,left
+#
+SectionExpandedX=-38
+SectionExpandedY=-2
+SectionExpandedOnCommand=maxwidth,194;shadowlength,1;shadowcolor,color("0.1,0.1,0.1,0.25")
+#
+SectionCollapsedX=-38
+SectionCollapsedY=-2
+SectionCollapsedOnCommand=maxwidth,194;shadowlength,1;shadowcolor,color("0.1,0.1,0.1,0.2")
+SectionCountX=112
+SectionCountY=0
+SectionCountOnCommand=zoom,0.75;strokecolor,Color("Outline")
+#
+RouletteX=0
+RouletteY=0
+RouletteOnCommand=maxwidth,400;shadowlength,1;zoom,0.75;rainbowscroll,true;thump,2;
+#
+SortX=-132
+SortY=-2
+SortOnCommand=maxwidth,256;horizalign,left
+#
+ModeX=-132
+ModeY=-2
+ModeOnCommand=maxwidth,256;horizalign,left;strokecolor,Color("Outline")
+#
+GradeP1X=106+16
+GradeP1Y=-8
+GradeP2X=110+16
+GradeP2Y=8
+GradesShowMachine=true
+
+[SongManager]
+SongGroupColor1=Color("Red")
+SongGroupColor2=Color("Red")
+SongGroupColor3=Color("Red")
+SongGroupColor4=Color("Red")
+SongGroupColor5=Color("Red")
+SongGroupColor6=Color("Red")
+SongGroupColor7=Color("Red")
+SongGroupColor8=Color("Red")
+SongGroupColor9=Color("Red")
+SongGroupColor10=Color("Red")
+
+[StepsDisplay]
+FrameX=0
+FrameY=0
+FrameOnCommand=
+FrameLoadCommand=%function(self,param) end;
+FrameSetCommand=%function(self,param) \
+	if param.CustomDifficulty then \
+		self:diffuse(CustomDifficultyToColor(param.CustomDifficulty)); \
+	end; \
+end;
+#
+ShowTicks=false
+NumTicks=10
+MaxTicks=14
+TicksX=0
+TicksY=0
+TicksOnCommand=shadowlength,0;
+TicksSetCommand=%function(self,param) end;
+#
+ShowMeter=true
+ZeroMeterString="?"
+MeterX=2
+MeterY=0.5
+MeterOnCommand=horizalign,left;vertalign,bottom;shadowlength,1;textglowmode,'TextGlowMode_Inner';zoom,0.75;skewx,-0.125;zoomy,0.75*3;diffusealpha,0;skewy,0.25;sleep,0.35*1.5;decelerate,0.35*0.5;zoomy,0.75;skewy,0;diffusealpha,1
+MeterSetCommand=%function(self,param) \
+	if param.CustomDifficulty then \
+		self:diffuse(CustomDifficultyToColor(param.CustomDifficulty)); \
+		self:shadowcolor(CustomDifficultyToDarkColor(param.CustomDifficulty)); \
+	end; \
+	if param.Meter then \
+		if param.Meter >= 10 then \
+			self:glowramp(); \
+			self:effectperiod(2); \
+			self:effectclock('beat'); \
+			self:effectcolor1(Colors.Alpha( Color("White"), 0 )); \
+			self:effectcolor2(Colors.Alpha( Color("White"), 0.45 )); \
+		else \
+			self:stopeffect(); \
+		end; \
+	end; \
+	(cmd(finishtweening;addx,4;diffusealpha,0.25;linear,0.1;diffusealpha,1;addx,-4))(self); \
+end;
+#
+ShowDescription=true
+DescriptionX=-2
+DescriptionY=0.5
+DescriptionOnCommand=horizalign,right;vertalign,bottom;shadowlength,1;uppercase,true;zoom,0.75;maxwidth,128+8;diffusealpha,0;sleep,0.35;linear,0.35*0.5;diffusealpha,1
+DescriptionSetCommand=%function(self,param) \
+	if self:GetText() == "" then \
+		self:settext("Edit"); \
+	end; \
+	if param.CustomDifficulty then \
+		self:diffuse(CustomDifficultyToColor(param.CustomDifficulty)); \
+		self:shadowcolor(CustomDifficultyToDarkColor(param.CustomDifficulty)); \
+	end; \
+	(cmd(finishtweening;diffusealpha,0.25;linear,0.1;diffusealpha,1))(self); \
+end;
+#
+ShowAutogen=false
+AutogenX=40
+AutogenY=0
+AutogenOnCommand=
+AutogenSetCommand=%function(self,param) if param.Difficulty then self:diffuse(CustomDifficultyToLightColor(param.Difficulty)); self:strokecolor(CustomDifficultyToDarkColor(param.Difficulty)); end end
+#
+ShowStepsType=true
+StepsTypeX=-2
+StepsTypeY=-14.5
+StepsTypeOnCommand=finishtweening;playcommand,"Set"
+StepsTypeOffCommand=
+
+[StepsDisplayEdit]
+Fallback="StepsDisplay"
+
+[StepsDisplayGameplay]
+Fallback="StepsDisplay"
+MeterSetCommand=%function(self,param) \
+	if param.CustomDifficulty then \
+		self:diffuse(CustomDifficultyToColor(param.CustomDifficulty)); \
+		self:shadowcolor(CustomDifficultyToDarkColor(param.CustomDifficulty)); \
+	end; \
+end;
+
+[StepsDisplayEvaluation]
+Fallback="StepsDisplay"
+
+[StepsDisplayListRow]
+#
+ItemsSpacingY=24
+NumShownItems=5
+#
+MoveCommand=decelerate,0.3
+#
+FrameX=
+FrameY=0
+FrameOnCommand=
+FrameOffCommand=
+FrameSetCommand=%function(self,param) \
+	if param.CustomDifficulty then \
+		self:diffuse(ColorMidTone( CustomDifficultyToColor(param.CustomDifficulty) )); \
+	else \
+		self:diffuse(color('1,1,1,1')); \
+	end; \
+end;
+#
+ShowTicks=false
+NumTicks=10
+MaxTicks=10
+TicksSetCommand=
+#
+ShowMeter=true
+ZeroMeterString="0"
+MeterX=56
+MeterY=0
+MeterOnCommand=shadowlength,1;zoom,0.65
+MeterOffCommand=
+MeterSetCommand=%function(self,param) \
+	if param.CustomDifficulty then \
+		self:diffuse(CustomDifficultyToColor(param.CustomDifficulty)); \
+		self:shadowcolor(CustomDifficultyToDarkColor(param.CustomDifficulty)); \
+	end; \
+	if param.Meter then \
+		if param.Meter >= 10 then \
+			self:glowshift(); \
+		else \
+			self:stopeffect(); \
+		end; \
+	end; \
+end;
+#
+ShowDescription=true
+DescriptionX=-64-8+20
+DescriptionY=0
+DescriptionOnCommand=shadowlength,1;horizalign,left;zoom,0.65;maxwidth,128+8-20;uppercase,true;
+DescriptionOffCommand=
+DescriptionSetCommand=%function(self,param) \
+	if self:GetText() == "" then \
+		self:settext("Edit"); \
+	end; \
+	if param.CustomDifficulty then \
+		self:diffuse(CustomDifficultyToColor(param.CustomDifficulty)); \
+		self:shadowcolor(CustomDifficultyToDarkColor(param.CustomDifficulty)); \
+	end; \
+end;
+#
+ShowAutogen=true
+AutogenX=0
+AutogenY=0
+AutogenOnCommand=diffuseshift;effectcolor1,Colors.Alpha( Color("Green") , 0.5 );effectcolor2,ColorLightTone( Color("Green") );
+AutogenSetCommand=
+#
+#ShowStepsType=GetUserPref("UserPrefAutoSetStyle")
+ShowStepsType=true
+StepsTypeX=-64-8
+StepsTypeY=0
+StepsTypeOnCommand=zoom,0.45;skewx,-0.125
+StepsTypeSetCommand=
+
+[StreamDisplay]
+; a simple bar life meter:
+; PillTransformFunction=function(self,offsetFromCenter,itemIndex,numItems) local native_width=32; local zoomed_width=12; self:zoomx(zoomed_width/native_width); self:x((itemIndex-(numItems/2))*zoomed_width); end
+PillTransformFunction=function(self,offsetFromCenter,itemIndex,numItems) \
+	self:zoomtowidth(256); \
+end
+TextureCoordScaleX=1
+NumPills=1
+AlwaysBounceNormalBar=false
+[TextBanner]
+TitleOnCommand=horizalign,left;shadowlength,1;
+SubtitleOnCommand=horizalign,left;shadowlength,1;
+ArtistOnCommand=horizalign,left;shadowlength,1;skewx,-0.2
+ArtistPrependString=""
+AfterSetCommand=%TextBannerAfterSet
