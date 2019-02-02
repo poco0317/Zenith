@@ -1,5 +1,7 @@
 local t = Def.ActorFrame {}
 
+local brightness = 0.3
+
 local enabledCustomWindows = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).CustomEvaluationWindowTimings
 
 local customWindows = timingWindowConfig:get_data().customWindows
@@ -9,6 +11,16 @@ local scoreType = themeConfig:get_data().global.DefaultScoreType
 if GAMESTATE:GetNumPlayersEnabled() == 1 and themeConfig:get_data().eval.ScoreBoardEnabled then
 	t[#t + 1] = LoadActor("scoreboard")
 end
+
+	t[#t + 1] =
+		Def.Sprite {
+			InitCommand=function(self)
+				self:LoadBackground(GAMESTATE:GetCurrentSong():GetBackgroundPath())
+					self:scaletocover(0, 0, SCREEN_WIDTH, SCREEN_BOTTOM)
+					self:smooth(0.5)
+					self:diffusealpha(brightness)
+				end
+		}
 
 t[#t + 1] =
 	LoadFont("Common Normal") ..

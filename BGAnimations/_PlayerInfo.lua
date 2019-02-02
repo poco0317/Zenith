@@ -93,7 +93,7 @@ t[#t + 1] =
 	LoadFont("Common Normal") ..
 		{
 			InitCommand = function(self)
-				self:xy(AvatarX + 3, AvatarY + 32):maxwidth(400):halign(0):zoom(0.4):diffuse(getMainColor("positive"))
+				self:xy(AvatarX + 3, AvatarY + 36.5):maxwidth(222):halign(0):zoom(0.62):diffuse(getMainColor("positive"))
 			end,
 			SetCommand = function(self)
 				self:settextf("%s: %5.2f", profileName, playerRating)
@@ -204,7 +204,7 @@ t[#t + 1] =
 				self:queuecommand("Set")
 			end,
 			SetCommand = function(self)
-				self:settext("| Plays: " .. playCount)
+				self:settext(" ")
 			end
 		},
 	LoadFont("Common Normal") ..
@@ -216,7 +216,7 @@ t[#t + 1] =
 				self:queuecommand("Set")
 			end,
 			SetCommand = function(self)
-				self:settext("| Arrows Smashed: " .. noteCount)
+				self:settext(" ")
 			end
 		},
 	LoadFont("Common Normal") ..
@@ -229,13 +229,13 @@ t[#t + 1] =
 			end,
 			SetCommand = function(self)
 				local time = SecondsToHHMMSS(playTime)
-				self:settextf("Total Time Played: " .. time)
+				self:settextf(" ")
 			end
 		},
 	LoadFont("Common Normal") ..
 		{
 			InitCommand = function(self)
-				self:xy(SCREEN_CENTER_X - 255, AvatarY + 32):halign(0.5):zoom(0.35):diffuse(getMainColor("positive"))
+				self:xy(SCREEN_CENTER_X - 255, AvatarY + 36):halign(0.5):zoom(0.55):diffuse(getMainColor("positive"))
 			end,
 			BeginCommand = function(self)
 				self:queuecommand("Set")
@@ -253,7 +253,7 @@ t[#t + 1] =
 				self:queuecommand("Set")
 			end,
 			SetCommand = function(self)
-				self:settext("Theme Version: 1.25_4 (r0085)")
+				self:settext("Theme Version: 1.3 (r0095)")
 			end
 		},
 	LoadFont("Common Normal") .. {
