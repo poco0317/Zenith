@@ -3,7 +3,7 @@ local c
 
 local function arbitraryComboX(value) 
 	c.Label:x(value) 
-	c.Number:x(value - 4)
+	c.Number:x(value + 37)
 	c.Border:x(value)
   end 
 
@@ -27,7 +27,7 @@ local t =
 		{
 			Name = "Number",
 			InitCommand = function(self)
-				self:xy(MovableValues.ComboX - 4, MovableValues.ComboY):halign(1):valign(1):skewx(-0.125):visible(
+				self:xy(MovableValues.ComboX + 35, MovableValues.ComboY):halign(1):valign(1):skewx(-0.125):visible(
 					false
 				)
 			end
@@ -57,9 +57,9 @@ local t =
 	end,
 	OnCommand = function(self)
 		if (allowedCustomization) then
-			c.Label:settext("COMBO")
+			c.Label:settext(" ")
 			c.Number:visible(true)
-			c.Label:visible(true)
+			c.Label:visible(false)
 			c.Number:settext(1000)
 			Movable.DeviceButton_3.propertyOffsets = {self:GetTrueX() -6, self:GetTrueY() + c.Number:GetHeight()*1.5}	-- centered to screen/valigned
 			setBorderAlignment(c.Border, 0.5, 1)
@@ -74,9 +74,9 @@ local t =
 			return
 		end
 
-		c.Label:settext("COMBO")
+		c.Label:settext(" ")
 		c.Number:visible(true)
-		c.Label:visible(true)
+		c.Label:visible(false)
 		c.Number:settext(iCombo)
 
 		-- FullCombo Rewards

@@ -2,14 +2,14 @@ local t = Def.ActorFrame {};
 
 t[#t+1] = Def.ActorFrame {
   FOV=90;
-  InitCommand=cmd(Center);
+  InitCommand=self(Center);
 
 	Def.Sprite {
 		OnCommand=function(self)
 			if GAMESTATE:GetCurrentSong() then
 				self:LoadBackground( GAMESTATE:GetCurrentSong():GetBackgroundPath() );
 				self:scaletoclipped( SCREEN_WIDTH+1,SCREEN_HEIGHT );
-				(cmd(diffusealpha,0;linear,1;diffusealpha,0.75))(self);
+				(self(diffusealpha,0;linear,1;diffusealpha,0.75))(self);
 			else
 				self:visible(false);
 			end

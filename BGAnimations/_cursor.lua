@@ -36,10 +36,11 @@ for i = 0, maxChild do
 end
 
 t[#t + 1] =
-	Def.Quad {
+	Def.Sprite {
 	Name = "Cursor",
+	Texture = "cursor.png",
 	InitCommand = function(self)
-		self:xy(0, 0):zoomto(4, 4):rotationz(45)
+		self:xy(0, 0):zoomto(50, 50)
 	end
 }
 

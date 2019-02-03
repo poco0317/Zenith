@@ -1,11 +1,13 @@
 local update = false
 local showOnline = false
+local profileP1 = GetPlayerOrMachineProfile(PLAYER_1)
+local PlayerFrameX = 0
+local PlayerFrameY = SCREEN_HEIGHT - 50
 local function BroadcastIfActive(msg)
 	if update then
 		MESSAGEMAN:Broadcast(msg)
 	end
 end
-
 local t =
 	Def.ActorFrame {
 	BeginCommand = function(self)
@@ -44,7 +46,7 @@ local t =
 	TabChangedMessageCommand = function(self)
 		self:queuecommand("Set")
 	end
-}
+}	
 
 local frameX = 3
 local frameY = 75
@@ -398,37 +400,6 @@ local function rankingButton(i)
 	return t
 end
 
---avatar
-t[#t + 1] =
-	Def.ActorFrame {
-	Name = "Avatar" .. PLAYER_1,
-	BeginCommand = function(self)
-		self:queuecommand("Set")
-		self:SetUpdateFunction(highlight)
-	end,
-	SetCommand = function(self)
-		if profile == nil then
-			self:visible(false)
-		else
-			self:visible(true)
-		end
-	end,
-	},
-	Def.Sprite {
-		Name = "Image",
-		InitCommand = function(self)
-			self:visible(true):halign(0):valign(0):xy(SCREEN_CENTER_X - 20, SCREEN_HEIGHT - 50 - 390)
-		end,
-		BeginCommand = function(self)
-			self:queuecommand("ModifyAvatar")
-		end,
-		ModifyAvatarCommand = function(self)
-			self:finishtweening()
-			self:Load(getAvatarPath(PLAYER_1))
-			self:zoomto(50, 50)
-		end
-	}
-
 t[#t + 1] =
 	Def.ActorFrame {
 	InitCommand = function(self)
@@ -689,6 +660,21 @@ local function littlebits(i)
 				end
 			}
 	}
+	
+	--put the avatar here to catch a dumb bug not worth explaining -ryan
+	
+	t[#t + 1] =
+	Def.Sprite {
+		InitCommand = function(self)
+			self:halign(0):valign(0):xy(PlayerFrameX - 13, PlayerFrameY - 500):draworder(1337)
+		end,
+		BeginCommand = function(self)
+			self:finishtweening()
+			self:Load(getAvatarPath(PLAYER_1))
+			self:zoomto(50, 50)
+		end
+	}
+	
 	return t
 end
 
