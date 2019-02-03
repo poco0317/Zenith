@@ -3,7 +3,7 @@ local c
 
 local function arbitraryComboX(value) 
 	c.Label:x(value) 
-	c.Number:x(value - 4)
+	c.Number:x(value + 37)
 	c.Border:x(value)
   end 
 
@@ -27,7 +27,7 @@ local t =
 		{
 			Name = "Number",
 			InitCommand = function(self)
-				self:xy(MovableValues.ComboX - 4, MovableValues.ComboY):halign(1):valign(1):skewx(-0.125):visible(
+				self:xy(MovableValues.ComboX + 35, MovableValues.ComboY):halign(1):valign(1):skewx(-0.125):visible(
 					false
 				)
 			end
