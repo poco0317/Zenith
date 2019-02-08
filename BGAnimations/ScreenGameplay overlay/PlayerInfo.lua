@@ -49,10 +49,11 @@ local t =
 				self:queuecommand("Set")
 			end
 		},
-	LoadFont("Common Normal") ..
+		--changed font here so it doesn't interfere with arrows -ryan
+	LoadFont("ZenithBold") ..
 		{
 			InitCommand = function(self)
-				self:xy(PlayerFrameX + 91, PlayerFrameY + 39):halign(0):zoom(0.4):maxwidth(SCREEN_WIDTH * 0.8)
+				self:xy(PlayerFrameX + 91, PlayerFrameY + 39):halign(0):zoom(0.4):maxwidth(SCREEN_WIDTH * 0.6)
 			end,
 			BeginCommand = function(self)
 				self:settext(GAMESTATE:GetPlayerState(PLAYER_1):GetPlayerOptionsString("ModsLevel_Current"))

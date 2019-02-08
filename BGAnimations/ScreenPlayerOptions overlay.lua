@@ -55,30 +55,6 @@ t[#t + 1] =
 	end
 }
 
---Frames
-t[#t + 1] =
-	Def.Quad {
-	InitCommand = function(self)
-		self:xy(0, 0):halign(0):valign(0):zoomto(SCREEN_WIDTH, topFrameHeight):diffuse(color("#000000"))
-	end
-}
-t[#t + 1] =
-	Def.Quad {
-	InitCommand = function(self)
-		self:xy(0, topFrameHeight):halign(0):valign(1):zoomto(SCREEN_WIDTH, borderWidth):diffuse(getMainColor("highlight")):diffusealpha(
-			0.5
-		)
-	end
-}
-
-t[#t + 1] =
-	LoadFont("Common Large") ..
-	{
-		InitCommand = function(self)
-			self:xy(5, 32):halign(0):valign(1):zoom(0.55):diffuse(getMainColor("positive")):settext("Player Options:")
-		end
-	}
-
 local NSPreviewSize = 0.5
 local NSPreviewX = 20
 local NSPreviewY = 125

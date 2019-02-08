@@ -235,13 +235,25 @@ t[#t + 1] =
 	LoadFont("Common Normal") ..
 		{
 			InitCommand = function(self)
-				self:xy(SCREEN_CENTER_X - 255, AvatarY + 36):halign(0.5):zoom(0.55):diffuse(getMainColor("positive"))
+				self:xy(SCREEN_CENTER_X - 244, AvatarY + 36):halign(0.5):zoom(0.65):diffuse(getMainColor("positive"))
 			end,
 			BeginCommand = function(self)
 				self:queuecommand("Set")
 			end,
 			SetCommand = function(self)
 				self:settext("| Judge: " .. GetTimingDifficulty())
+			end
+		},
+			LoadFont("Common Normal") ..
+		{
+			InitCommand = function(self)
+				self:xy(SCREEN_CENTER_X - 174, AvatarY + 36):halign(0.5):zoom(0.65):diffuse(getMainColor("positive"))
+			end,
+			BeginCommand = function(self)
+				self:queuecommand("Set")
+			end,
+			SetCommand = function(self)
+				self:settext("| Life: " .. GetLifeDifficulty())
 			end
 		},
 	LoadFont("Common Normal") ..

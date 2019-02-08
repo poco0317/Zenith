@@ -1,19 +1,6 @@
 return Def.ActorFrame {
 	Def.Quad {
 		InitCommand = function(self)
-			self:xy(2, -2):zoomto(4, 38)
-		end,
-		SetGradeCommand = function(self, params)
-			if params.Grade then
-				self:diffuse(getDifficultyColor("Difficulty_" .. params.Difficulty))
-				self:diffusealpha(0.5)
-			else
-				self:diffusealpha(0)
-			end
-		end
-	},
-	Def.Quad {
-		InitCommand = function(self)
 			self:xy(2, -2):zoomto(4, 19)
 		end,
 		SetGradeCommand = function(self, params)
@@ -25,10 +12,10 @@ return Def.ActorFrame {
 			end
 		end
 	},
-	LoadFont("Common Normal") ..
+	LoadFont("ZenithBold") ..
 		{
 			InitCommand = function(self)
-				self:xy(16, -1):zoom(0.5):maxwidth(WideScale(get43size(20), 20) / 0.5)
+				self:xy(18, -1):zoom(0.5):maxwidth(WideScale(get43size(20), 20) / 0.5)
 			end,
 			SetGradeCommand = function(self, params)
 				local sGrade = params.Grade or "Grade_None"

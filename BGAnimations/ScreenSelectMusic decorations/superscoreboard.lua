@@ -1,19 +1,22 @@
-local tzoom = 0.5
+local t = Def.ActorFrame{}
+--here's superscoreboard if you want to attempt to fix it -ryan
+
+--[[local tzoom = 0.5
 local pdh = 48 * tzoom
 local ygap = 2
 local packspaceY = pdh + ygap
 local currentCountry = "Global"
 
-local numscores = 11
+local numscores = 13
 local ind = 0
 local offx = 5
-local width = SCREEN_WIDTH * 0.34
+local width = SCREEN_WIDTH * 0.56
 local dwidth = width - offx * 2
-local height = (numscores + 2) * packspaceY - packspaceY / 3 - 30 -- account dumbly for header being moved up
+local height = (numscores + 2) * packspaceY - packspaceY / 3 -- account dumbly for header being moved up
 
 local adjx = 14
 local c0x = 10
-local c1x = 20 + c0x
+local c1x = 3 + c0x
 local c2x = c1x + (tzoom * 7 * adjx) -- guesswork adjustment for epxected text length
 local c5x = dwidth -- right aligned cols
 local c4x = c5x - adjx - (tzoom * 3 * adjx) -- right aligned cols
@@ -22,7 +25,7 @@ local headeroff = packspaceY / 2
 local row2yoff = 1
 local moving
 local cheese
-local collapsed = false
+local collapsed = true
 
 local isGlobalRanking = true
 
@@ -74,6 +77,7 @@ local o =
 	Name = "ScoreDisplay",
 	InitCommand = function(self)
 		cheese = self
+		self:xy(260,260):zoom(.45)
 		self:SetUpdateFunction(highlight)
 		self:SetUpdateFunctionInterval(0.05)
 	end,
@@ -181,58 +185,27 @@ local o =
 		FILTERMAN:HelpImTrappedInAChineseFortuneCodingFactory(false)
 		self:playcommand("Init")
 	end,
-	Def.Sprite {
-		Name = "FrameDisplay",
-		Texture = "_msd fg",
-		InitCommand = function(self)
-			self:zoomto(SCREEN_WIDTH * 0.56 - 150, 333 + 42):xy(SCREEN_LEFT - 20,SCREEN_TOP - 22):halign(0):valign(0)
-		end,
-		HighlightCommand = function(self)
-			if isOver(self) and collapsed then
-				self:diffusealpha(1)
-			else
-				self:diffusealpha(0.8)
-			end
-		end
-	},
-	Def.Sprite {
-		Name = "FrameDisplay",
-		Texture = "_msd bgmask",
-		InitCommand = function(self)
-			self:zoomto(SCREEN_WIDTH * 0.56 - 150, 333 + 42):xy(SCREEN_LEFT - 20,SCREEN_TOP - 22):halign(0):valign(0):diffusealpha(0.8)
-		end,
-		HighlightCommand = function(self)
-			if isOver(self) and collapsed then
-				self:diffusealpha(1)
-			else
-				self:diffusealpha(0.8)
-			end
-		end
-	},
-	-- grabby thing
 	Def.Quad {
+		Name = "FrameDisplay",
 		InitCommand = function(self)
-			self:xy(dwidth / 4, headeroff):zoomto(dwidth - dwidth / 4, pdh - 8 * tzoom):halign(0):diffuse(getMainColor("frames")):diffusealpha(
-				0.0
-			):valign(1)
+			self:zoomto(width, height - headeroff):halign(0):valign(0):diffuse(color("#333333"))
 		end,
-		WHAZZZAAAACommand = function(self)
+		HighlightCommand = function(self)
 			if isOver(self) and collapsed then
-				self:diffusealpha(0.6):diffuse(color("#fafafa"))
-				if INPUTFILTER:IsBeingPressed("Mouse 0", "Mouse") then
-					self:diffusealpha(0):zoomto(400, 400):valign(0.5):halign(0.5)
-					local nx = INPUTFILTER:GetMouseX() - width / 2
-					local ny = INPUTFILTER:GetMouseY() - self:GetY()
-					self:GetParent():SaveXY(nx, ny) -- this can probably be wrapped for convenience -mina
-					self:GetParent():LoadXY()
-				else
-					self:zoomto(dwidth / 2, pdh / 2):valign(1):halign(0)
-				end
+				self:diffusealpha(1)
 			else
-				self:diffuse(getMainColor("frames")):diffusealpha(0)
+				self:diffusealpha(1)
 			end
+		end,
+		},
+	-- headers
+	Def.Quad {
+		Name = "HeaderBar",
+		InitCommand = function(self)
+			self:zoomto(width, pdh - 8 * tzoom):halign(0):diffuse(getMainColor("frames")):diffusealpha(0.5):valign(0)
 		end
 	},
+	-- ~~grabby thing~~ **no** -ryan
 	LoadFont("Common normal") ..
 		{
 			-- informational text about online scores
@@ -253,7 +226,8 @@ local o =
 					self:settext("Login to view scores")
 				else
 					if #scoretable == 0 then
-						self:settext("Scores not found.\n Either the file is blacklisted, there are no scores on it, or your Internet is out."):xy(10,35)
+					--about 10,000,000,000 spaces for centering :ok_hand: -ryan
+						self:settext("                                            Scores not found.\n Either the file is blacklisted, there are no scores on it, or your Internet is out."):xy(10,35)
 					else
 						self:settext("")
 					end
@@ -274,7 +248,7 @@ local o =
 		{
 			--current rate toggle
 			InitCommand = function(self)
-				self:xy(c5x - 33, headeroff + 4):valign(1):zoom(tzoom)
+				self:xy(c5x, headeroff):zoom(tzoom):halign(1):valign(1)
 			end,
 			HighlightCommand = function(self)
 				highlightIfOver(self)
@@ -299,9 +273,9 @@ local o =
 			--top score/all score toggle
 			InitCommand = function(self)
 				if collapsed then
-					self:xy(c5x - 109, headeroff + 4):zoom(tzoom):valign(1)
+					self:xy(c5x - 385, headeroff):zoom(tzoom):halign(1):valign(1)
 				else
-					self:xy(c5x - 109, headeroff + 4):zoom(tzoom):valign(1)
+					self:xy(c5x - 315, headeroff):zoom(tzoom):halign(1):valign(1)
 				end
 			end,
 			HighlightCommand = function(self)
@@ -309,9 +283,9 @@ local o =
 			end,
 			UpdateCommand = function(self)
 				if DLMAN:GetTopScoresOnlyFilter() then
-					self:settext(topornah[1] .. " |")
+					self:settext(topornah[1])
 				else
-					self:settext(topornah[2] .. " |")
+					self:settext(topornah[2])
 				end
 			end,
 			MouseLeftClickMessageCommand = function(self)
@@ -470,7 +444,7 @@ local function makeScoreDisplay(i)
 				Name = "Replay" .. i,
 				InitCommand = function(self)
 					if not collapsed then
-						self:xy(capWideScale(c3x + 52, c3x), -10):zoom(tzoom - 0.05):halign(1):valign(0):maxwidth(width / 2 / tzoom):addy(
+						self:xy(capWideScale(c3x + 52, c3x),90):zoom(tzoom - 0.05):halign(1):valign(0):maxwidth(width / 2 / tzoom):addy(
 							row2yoff
 						):diffuse(getMainColor("enabled"))
 					end
@@ -522,28 +496,6 @@ local function makeScoreDisplay(i)
 					self:settextf("%05.2f%%", hs:GetWifeScore() * 10000 / 100):diffuse(byGrade(hs:GetWifeGrade()))
 				end
 			},
-		LoadFont("Common normal") ..
-			{
-				--date
-				InitCommand = function(self)
-					if not collapsed then
-						self:x(c5x):zoom(tzoom - 0.05):halign(1):valign(0):maxwidth(width / 4 / tzoom):addy(row2yoff)
-					end
-				end,
-				DisplayCommand = function(self)
-					if IsUsingWideScreen() then
-						self:settext(hs:GetDate())
-					else
-						self:settext(hs:GetDate():sub(1, 10))
-					end
-				end,
-				CollapseCommand = function(self)
-					self:visible(false)
-				end,
-				ExpandCommand = function(self)
-					self:visible(true):addy(-row2yoff)
-				end
-			}
 	}
 	return o
 end
@@ -551,41 +503,6 @@ end
 for i = 1, numscores do
 	o[#o + 1] = makeScoreDisplay(i)
 end
-
---[[
---Commented for now
--- Todo: make the combobox scrollable
--- To handle a large amount of choices
-local countryDropdown
-countryDropdown =
-	Widg.ComboBox {
-	onSelectionChanged = function(newChoice)
-		currentCountry = newChoice
-		cheese:queuecommand("ChartLeaderboardUpdate")
-	end,
-	choice = "Global",
-	choices = DLMAN:GetCountryCodes(),
-	commands = {
-		CollapseCommand = function(self)
-			self:xy(c5x - 20, headeroff - 20):halign(0)
-		end,
-		ExpandCommand = function(self)
-			self:xy(c5x - 89, headeroff)
-		end,
-		ChartLeaderboardUpdateMessageCommand = function(self)
-			self:visible(DLMAN:IsLoggedIn())
-		end
-	},
-	selectionColor = color("#111111"),
-	itemColor = color("#111111"),
-	hoverColor = getMainColor("highlight"),
-	height = tzoom * 29,
-	width = 50,
-	x = c5x - 89, -- needs to be thought out for design purposes
-	y = headeroff,
-	visible = DLMAN:IsLoggedIn(),
-	numitems = 4
-}
-o[#o + 1] = countryDropdown
-]]
 return o
+]]
+return t

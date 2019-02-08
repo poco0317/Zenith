@@ -742,7 +742,7 @@ t[#t + 1] =
 	LoadFont("Common Normal") ..
 	{
 		InitCommand = function(self)
-			self:xy(SCREEN_CENTER_X, SCREEN_BOTTOM - 10):zoom(0.35):settext(getCurRateDisplayString())
+			self:xy(SCREEN_CENTER_X, SCREEN_BOTTOM - 8):zoom(0.35):settext(getCurRateDisplayString())
 		end,
 		DoneLoadingNextSongMessageCommand = function(self)
 			self:settext(getCurRateDisplayString())
@@ -780,7 +780,7 @@ t[#t + 1] =
 		{
 			Name = "BPM",
 			InitCommand = function(self)
-				self:x(SCREEN_CENTER_X):y(SCREEN_BOTTOM - 20):halign(0.5):zoom(0.40)
+				self:x(SCREEN_CENTER_X):y(SCREEN_BOTTOM - 16):halign(0.5):zoom(0.40)
 			end
 		},
 	DoneLoadingNextSongMessageCommand = function(self)

@@ -74,10 +74,10 @@ t[#t + 1] =
 }
 
 t[#t + 1] =
-	LoadFont("Common Large") ..
+	LoadFont("ZenithBold") ..
 	{
 		InitCommand = function(self)
-			self:xy(5, 32):halign(0):valign(1):zoom(0.55):settext("Help Menu:")
+			self:xy(5, 23):halign(0):valign(1):zoom(0.75):settext("Help Menu:")
 		end
 	}
 	

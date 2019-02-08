@@ -85,6 +85,8 @@ local t =
 	end
 	}
 
+t[#t + 1] = LoadActor("superscoreboard.lua")
+
 t[#t + 1] =
 	Def.Sprite {
 		Texture=("_wifeTwirl fg.png"),
@@ -306,7 +308,7 @@ t[#t + 1] =
 		{
 			Name = "Goalll",
 			InitCommand = function(self)
-				self:xy(frameX + 135, frameY + 33):zoom(0.6):halign(0.5):valign(0)
+				self:xy(frameX + 204, frameY + -68):zoom(0.6):halign(0.5):valign(0)
 			end,
 			MintyFreshCommand = function(self)
 				if song and steps then
@@ -405,7 +407,7 @@ local function radarPairs(i)
 					end
 				end
 			},
-		LoadFont("Common Normal") ..
+		LoadFont("ZenithBold") ..
 			{
 				InitCommand = function(self)
 					self:xy(frameX + 162, frameY + -52 + 13 * i - 20):zoom(0.6):halign(1):maxwidth(60)
@@ -472,7 +474,7 @@ t[#t + 1] =
 t[#t + 1] =
 	Def.Sprite {
 	InitCommand = function(self)
-		self:xy(capWideScale(get43size(344), 364) + 50, capWideScale(get43size(345), 255 + 50)):halign(0.5):valign(1)
+		self:xy(capWideScale(get43size(344), 364) - 70, capWideScale(get43size(345), 255 + 170)):halign(0.5):valign(1)
 	end,
 	MortyFartsCommand = function(self)
 		self:finishtweening()
