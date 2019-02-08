@@ -5,7 +5,7 @@ t[#t + 1] =
 	{
 		Name = "currentTime",
 		InitCommand = function(self)
-			self:xy(SCREEN_WIDTH - 5, SCREEN_BOTTOM - 2):halign(1):valign(1):zoom(0.45)
+			self:xy(SCREEN_WIDTH - 5, SCREEN_BOTTOM - 2):halign(1):valign(1):zoom(0.38)
 		end
 	}
 
@@ -25,7 +25,7 @@ local function Update(self)
 	local hour = Hour()
 	local minute = Minute()
 	local second = Second()
-	self:GetChild("currentTime"):settextf("%04d-%02d-%02d %02d:%02d:%02d", year, month, day, hour, minute, second)
+	self:GetChild("currentTime"):settextf("Current Time: %04d-%02d-%02d %02d:%02d:%02d", year, month, day, hour, minute, second)
 
 	local sessiontime = GAMESTATE:GetSessionTime()
 	self:GetChild("SessionTime"):settextf("Session Time: " .. SecondsToHHMMSS(sessiontime))
