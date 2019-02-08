@@ -15,16 +15,20 @@ local t =
 	InitCommand=function(self)
 		self:x(SCREEN_CENTER_X):y(SCREEN_CENTER_Y-20.5)
 	end;
+	OnCommand = function(self)
+		SCREENMAN:GetTopScreen():AddInputCallback(input)
+		self:queuecommand("DelayedOn")
+	end;
 	LoadActor("_background") .. {
 		InitCommand=function(self)
 			self:zoomtowidth(SCREEN_WIDTH)
 		end;
-		OnCommand=function(self)
+		DelayedOnCommand=function(self)
 			self:shadowlength(1):diffusealpha(0):sleep(2.5):linear(0.125):diffusealpha(1)
 		end;
 	};
 	Def.ActorFrame {
-		OnCommand=function(self)
+		DelayedOnCommand=function(self)
 			self:z(-256):zoom(0):rotationz(360):rotationy(360):sleep(0.35):decelerate(2):rotationz(0):rotationy(0):z(0):zoom(1)
 		end;
 		LoadActor("_bottom rail") .. {
@@ -100,9 +104,6 @@ local t =
 			end;
 		};
 	};
-	OnCommand = function(self)
-		SCREENMAN:GetTopScreen():AddInputCallback(input)
-	end;
 }
 
 local frameX = THEME:GetMetric("ScreenTitleMenu", "ScrollerX")
@@ -140,13 +141,12 @@ t[#t + 1] =
 
 -- lazy game update button -mina
 local gameneedsupdating = false
-local buttons = {x = 122, y = 40, width = 140, height = 36, fontScale = 0.3, color = getMainColor("frames")}
+local buttons = {x = -305, y = SCREEN_HEIGHT/2 + 5, width = 140, height = 36, fontScale = 0.3, color = getMainColor("frames")}
 t[#t + 1] =
 	Def.Quad {
 	InitCommand = function(self)
-		self:xy(buttons.x, buttons.y):zoomto(buttons.width, buttons.height):halign(1):valign(0):diffuse(buttons.color):diffusealpha(
-			0
-		)
+		self:xy(buttons.x, buttons.y):zoomto(buttons.width, buttons.height):halign(0)
+		self:diffuse(buttons.color):diffusealpha(0)
 		local latest = tonumber((DLMAN:GetLastVersion():gsub("[.]", "", 1)))
 		local current = tonumber((GAMESTATE:GetEtternaVersion():gsub("[.]", "", 1)))
 		if latest and latest > current then
@@ -169,7 +169,7 @@ t[#t + 1] =
 	LoadFont("Common Large") ..
 	{
 		OnCommand = function(self)
-			self:xy(buttons.x + 3, buttons.y + 14):halign(1):zoom(buttons.fontScale):diffuse(getMainColor("positive"))
+			self:xy(buttons.x, buttons.y):halign(0):zoom(buttons.fontScale):diffuse(getMainColor("positive"))
 			if gameneedsupdating then
 				self:settext("Update Available\nClick to Update")
 			else
@@ -212,10 +212,10 @@ for i = 1, choiceCount do
 	t[#t + 1] =
 		Def.Quad {
 		OnCommand = function(self)
-			self:xy(scrollerX, scrollerY):zoomto(260, 16)
+			self:x(scrollerX - 30):zoomto(140, 16)
+			self:halign(1)
 			transformF(self, 0, i, choiceCount)
-			self:addx(SCREEN_CENTER_X - 20)
-			self:addy(SCREEN_CENTER_Y - 20)
+			self:addy(150)
 			self:diffusealpha(0)
 		end,
 		MouseLeftClickMessageCommand = function(self)
